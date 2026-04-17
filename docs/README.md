@@ -1,26 +1,86 @@
-# Uniform Management System
+# 🧵 Uniform Management System
 
 🌐 Language: [Português](README_PT.md) | English
 
-## Overview
+---
+
+## 📌 Overview
 Web system to manage the full workflow:
-orders → production → inventory → delivery
 
-## Features
-- Clients
-- Uniforms
-- Orders
-- Production stages
-- Bundles
-- Deliveries
-- Inventory
+**Orders → Production → Inventory → Delivery**
 
-## Flow
+Centralizes all company operations in one place, replacing spreadsheets and manual processes.
+
+---
+
+## ⚙️ Features
+
+### 👤 Clients
+- Client registration (name, contact)
+
+### 👕 Uniforms
+- Name
+- Fabric (PV / BRIM)
+- Size (PP → EXG)
+- Color
+- Reflective option
+
+### 📦 Orders
+- Create orders per client
+- Status:
+  - PENDING
+  - IN_PRODUCTION
+  - COMPLETED
+  - SHIPPED
+
+### 🧾 Order Items
+- Link uniforms + quantities
+
+### 🏭 Production
+- Assign seamstress
+- Stages:
+  - CUTTING
+  - SEWING
+  - PRINTING
+  - FINISHING
+  - PACKAGING
+- Track input/output per stage
+
+### 📦 Bundles
+- Group completed orders
+- Shipping date tracking
+
+### 🚚 Delivery
+- Assign delivery person
+- Status:
+  - PENDING
+  - IN_TRANSIT
+  - DELIVERED
+
+### 📊 Inventory
+- Track available items
+- Link items to specific clients
+
+---
+
+## 🔄 System Flow
+
 Client → Uniform → Order → Items → Production → Bundle → Delivery → Inventory
 
-## Advantages
-- Full centralization
+---
+
+## 🚀 Advantages
+
+- Full operational centralization
 - Complete traceability
-- Error reduction
-- Stage control
-- Remote access
+- Reduced errors and rework
+- Production stage control
+- Team management
+- Organized inventory
+- Remote access via browser
+
+---
+
+## 🧠 Goal
+
+Provide full operational visibility and enable scalable business growth.
