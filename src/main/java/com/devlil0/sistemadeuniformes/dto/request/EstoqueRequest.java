@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class EstoqueRequest {
 
-    @NotNull
+
     private Long id;
 
     @NotNull
@@ -17,6 +17,5 @@ public class EstoqueRequest {
 
     private boolean vinculadoCliente;
 
-    @NotNull
     private Long clienteId;
 }

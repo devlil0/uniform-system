@@ -2,16 +2,15 @@ package com.devlil0.sistemadeuniformes.service;
 
 import com.devlil0.sistemadeuniformes.dto.request.FardoRequest;
 import com.devlil0.sistemadeuniformes.dto.response.ClienteResponse;
-import com.devlil0.sistemadeuniformes.dto.response.EntregadorResponse;
 import com.devlil0.sistemadeuniformes.dto.response.FardoResponse;
 import com.devlil0.sistemadeuniformes.dto.response.PedidoResponse;
+import com.devlil0.sistemadeuniformes.enums.EtapaProducao;
 import com.devlil0.sistemadeuniformes.exception.ResourceNotFoundException;
-import com.devlil0.sistemadeuniformes.model.EntregadorEntity;
 import com.devlil0.sistemadeuniformes.model.FardoEntity;
 import com.devlil0.sistemadeuniformes.model.PedidoEntity;
-import com.devlil0.sistemadeuniformes.repository.EntregadorRepository;
 import com.devlil0.sistemadeuniformes.repository.FardoRepository;
 import com.devlil0.sistemadeuniformes.repository.PedidoRepository;
+import com.devlil0.sistemadeuniformes.repository.ProducaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +25,7 @@ public class FardoService {
 
     private final FardoRepository fardoRepository;
     private final PedidoRepository pedidoRepository;
-    private final EntregadorRepository entregadorRepository;
+    private final ProducaoRepository producaoRepository;
 
     public List<FardoResponse> findAll() {
         return fardoRepository.findAll().stream()
@@ -41,21 +40,22 @@ public class FardoService {
     }
 
     public FardoResponse create(FardoRequest request) {
+        boolean despachado = producaoRepository.existsByPedidoEntity_IdAndEtapa(
+                request.getPedidoId(), EtapaProducao.DESPACHADO);
+        if (!despachado) {
+            throw new IllegalStateException(
+                    "O pedido precisa ter a etapa DESPACHADO registrada antes de criar um fardo.");
+        }
+
         FardoEntity fardo = new FardoEntity();
         fardo.setDataEnvio(request.getDataEnvio());
-        
+
         if (request.getPedidoId() != null) {
             PedidoEntity pedido = pedidoRepository.findById(request.getPedidoId())
                     .orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado com ID: " + request.getPedidoId()));
             fardo.setPedidoEntity(pedido);
         }
-        
-        if (request.getEntregadorId() != null) {
-            EntregadorEntity entregador = entregadorRepository.findById(request.getEntregadorId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Entregador não encontrado com ID: " + request.getEntregadorId()));
-            fardo.setEntregadorEntity(entregador);
-        }
-        
+
         return toResponse(fardoRepository.save(fardo));
     }
 
@@ -70,13 +70,7 @@ public class FardoService {
                     .orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado com ID: " + request.getPedidoId()));
             fardo.setPedidoEntity(pedido);
         }
-        
-        if (request.getEntregadorId() != null) {
-            EntregadorEntity entregador = entregadorRepository.findById(request.getEntregadorId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Entregador não encontrado com ID: " + request.getEntregadorId()));
-            fardo.setEntregadorEntity(entregador);
-        }
-        
+
         return toResponse(fardoRepository.save(fardo));
     }
 
@@ -107,16 +101,7 @@ public class FardoService {
             }
             response.setPedidoResponse(pr);
         }
-        
-        if (entity.getEntregadorEntity() != null) {
-            EntregadorEntity e = entity.getEntregadorEntity();
-            EntregadorResponse er = new EntregadorResponse();
-            er.setId(e.getId());
-            er.setNome(e.getNome());
-            er.setTelefone(e.getTelefone());
-            response.setEntregadorResponse(er);
-        }
-        
+
         return response;
     }
 }

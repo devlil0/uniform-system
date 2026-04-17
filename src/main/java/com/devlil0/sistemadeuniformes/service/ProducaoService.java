@@ -5,6 +5,8 @@ import com.devlil0.sistemadeuniformes.dto.response.ClienteResponse;
 import com.devlil0.sistemadeuniformes.dto.response.CostureiraResponse;
 import com.devlil0.sistemadeuniformes.dto.response.PedidoResponse;
 import com.devlil0.sistemadeuniformes.dto.response.ProducaoResponse;
+import com.devlil0.sistemadeuniformes.enums.EtapaProducao;
+import com.devlil0.sistemadeuniformes.enums.StatusPedido;
 import com.devlil0.sistemadeuniformes.exception.ResourceNotFoundException;
 import com.devlil0.sistemadeuniformes.model.CostureiraEntity;
 import com.devlil0.sistemadeuniformes.model.PedidoEntity;
@@ -41,11 +43,16 @@ public class ProducaoService {
     }
 
     public ProducaoResponse create(ProducaoRequest request) {
+        if (request.getPedidoId() != null &&
+            producaoRepository.existsByPedidoEntity_IdAndEtapaNot(request.getPedidoId(), EtapaProducao.DESPACHADO)) {
+            throw new IllegalStateException("Este pedido já possui um registro de produção ativo.");
+        }
+
         ProducaoEntity producao = new ProducaoEntity();
         producao.setEtapa(request.getEtapa());
         producao.setEntrada(request.getEntrada());
         producao.setSaida(request.getSaida());
-        
+
         if (request.getPedidoId() != null) {
             PedidoEntity pedido = pedidoRepository.findById(request.getPedidoId())
                     .orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado com ID: " + request.getPedidoId()));
@@ -58,7 +65,9 @@ public class ProducaoService {
             producao.setCostureiraEntity(costureira);
         }
         
-        return toResponse(producaoRepository.save(producao));
+        ProducaoEntity saved = producaoRepository.save(producao);
+        atualizarStatusPedido(saved.getPedidoEntity(), saved.getEtapa());
+        return toResponse(saved);
     }
 
     public ProducaoResponse update(Long id, ProducaoRequest request) {
@@ -81,7 +90,20 @@ public class ProducaoService {
             producao.setCostureiraEntity(costureira);
         }
         
-        return toResponse(producaoRepository.save(producao));
+        ProducaoEntity saved = producaoRepository.save(producao);
+        atualizarStatusPedido(saved.getPedidoEntity(), saved.getEtapa());
+        return toResponse(saved);
+    }
+
+    private void atualizarStatusPedido(PedidoEntity pedido, EtapaProducao etapa) {
+        if (pedido == null || etapa == null) return;
+        if (etapa == EtapaProducao.CORTE) {
+            pedido.setStatus(StatusPedido.EM_PRODUCAO);
+            pedidoRepository.save(pedido);
+        } else if (etapa == EtapaProducao.DESPACHADO) {
+            pedido.setStatus(StatusPedido.FINALIZADO);
+            pedidoRepository.save(pedido);
+        }
     }
 
     public void delete(Long id) {

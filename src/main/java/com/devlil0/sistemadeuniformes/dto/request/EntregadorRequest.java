@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class EntregadorRequest {
 
-    @NotNull
+
     private Long id;
 
     @NotBlank

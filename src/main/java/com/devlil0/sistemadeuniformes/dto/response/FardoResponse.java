@@ -9,6 +9,5 @@ public class FardoResponse {
 
     private Long id;
     private PedidoResponse pedidoResponse;
-    private EntregadorResponse entregadorResponse;
     private LocalDate dataEnvio;
 }
