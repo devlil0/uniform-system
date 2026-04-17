@@ -20,8 +20,4 @@ public class FardoEntity {
     private PedidoEntity pedidoEntity;
 
     private LocalDate dataEnvio;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "entregador_id")
-    private EntregadorEntity entregadorEntity;
 }

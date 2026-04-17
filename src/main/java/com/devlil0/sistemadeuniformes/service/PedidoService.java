@@ -3,6 +3,7 @@ package com.devlil0.sistemadeuniformes.service;
 import com.devlil0.sistemadeuniformes.dto.request.PedidoRequest;
 import com.devlil0.sistemadeuniformes.dto.response.ClienteResponse;
 import com.devlil0.sistemadeuniformes.dto.response.PedidoResponse;
+import com.devlil0.sistemadeuniformes.enums.StatusPedido;
 import com.devlil0.sistemadeuniformes.exception.ResourceNotFoundException;
 import com.devlil0.sistemadeuniformes.model.ClienteEntity;
 import com.devlil0.sistemadeuniformes.model.PedidoEntity;
@@ -37,7 +38,7 @@ public class PedidoService {
 
     public PedidoResponse create(PedidoRequest request) {
         PedidoEntity pedido = new PedidoEntity();
-        pedido.setStatus(request.getStatus());
+        pedido.setStatus(StatusPedido.PENDENTE);
         if (request.getClienteId() != null) {
             ClienteEntity cliente = clienteRepository.findById(request.getClienteId())
                     .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado com ID: " + request.getClienteId()));
@@ -50,7 +51,9 @@ public class PedidoService {
     public PedidoResponse update(Long id, PedidoRequest request) {
         PedidoEntity pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pedido não encontrado com ID: " + id));
-        pedido.setStatus(request.getStatus());
+        if (request.getStatus() != null) {
+            pedido.setStatus(request.getStatus());
+        }
         if (request.getClienteId() != null) {
             ClienteEntity cliente = clienteRepository.findById(request.getClienteId())
                     .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado com ID: " + request.getClienteId()));

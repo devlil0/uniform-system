@@ -3,7 +3,25 @@
     "allow": [
       "Bash(npm install *)",
       "WebFetch(domain:iuuniformes.com.br)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npm start *)",
+      "Bash(netstat -ano)",
+      "Bash(cmd *)",
+      "Bash(powershell *)",
+      "Bash(cp \"C:/Users/Admin/.claude/image-cache/17704b18-04bc-46d6-97c2-91c0bfa3af1e/1.png\" \"public/logo.png\")",
+      "Bash(cp \"C:/Users/Admin/.claude/image-cache/17704b18-04bc-46d6-97c2-91c0bfa3af1e/1.png\" \"src/assets/img/logo.png\")",
+      "Bash(python -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "Bash(ls *)",
+      "Bash(python3 *)",
+      "Bash(node *)",
+      "Bash(xargs grep *)",
+      "Bash(xargs cat *)",
+      "Bash(sed -i \"s/logoText={'Horizon UI Dashboard'}/logoText={'IU Uniformes'}/g\" layouts/rtl/index.js)",
+      "Bash(sed -i \"s/placeholder='mail@simmmple.com'/placeholder='seu@email.com'/g\" views/auth/signIn/index.jsx)",
+      "Bash(sed -i \"s/value='Simmmple Web LLC'/value='IU Uniformes'/g\" views/admin/profile/components/General.js)",
+      "Bash(sed -i 's/\"Horizon UI PRO\"/\"IU Uniformes PRO\"/g; s/\"Horizon UI Free\"/\"IU Uniformes Free\"/g' views/admin/default/variables/tableDataCheck.json views/admin/default/variables/tableDataComplex.json views/admin/rtl/variables/tableDataCheck.json views/admin/rtl/variables/tableDataComplex.json)",
+      "Bash(sed -i 's/\"@simmmple.web\"/\"@devlil0\"/g' views/admin/marketplace/variables/tableDataTopCreators.json)",
+      "Bash(docker --version)"
     ]
   }
 }

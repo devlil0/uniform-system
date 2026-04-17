@@ -12,9 +12,9 @@ import java.util.Optional;
 @Repository
 public interface FardoRepository extends JpaRepository<FardoEntity, Long> {
 
-    @Query("select f from FardoEntity f left join fetch f.pedidoEntity p left join fetch f.entregadorEntity e")
+    @Query("select f from FardoEntity f left join fetch f.pedidoEntity p")
     List<FardoEntity> findAllWithAssociations();
 
-    @Query("select f from FardoEntity f left join fetch f.pedidoEntity p left join fetch f.entregadorEntity e where f.id = :id")
+    @Query("select f from FardoEntity f left join fetch f.pedidoEntity p where f.id = :id")
     Optional<FardoEntity> findByIdWithAssociations(@Param("id") Long id);
 }

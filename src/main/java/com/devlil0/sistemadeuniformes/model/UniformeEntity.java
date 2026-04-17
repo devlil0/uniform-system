@@ -1,5 +1,8 @@
 package com.devlil0.sistemadeuniformes.model;
 
+import com.devlil0.sistemadeuniformes.enums.Cor;
+import com.devlil0.sistemadeuniformes.enums.Malha;
+import com.devlil0.sistemadeuniformes.enums.NomeUniforme;
 import com.devlil0.sistemadeuniformes.enums.Refletivo;
 import com.devlil0.sistemadeuniformes.enums.Tamanho;
 import jakarta.persistence.Entity;
@@ -19,8 +22,11 @@ public class UniformeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String malha;
+    @Enumerated(EnumType.STRING)
+    private NomeUniforme nome;
+
+    @Enumerated(EnumType.STRING)
+    private Malha malha;
 
     @Enumerated(EnumType.STRING)
     private Tamanho tamanho;
@@ -28,5 +34,6 @@ public class UniformeEntity {
     @Enumerated(EnumType.STRING)
     private Refletivo refletivo;
 
-    private String cor;
+    @Enumerated(EnumType.STRING)
+    private Cor cor;
 }

@@ -12,6 +12,5 @@ public class PedidoRequest {
     @NotNull(message = "O ID do cliente é obrigatório")
     private Long clienteId;
 
-    @NotNull(message = "O status do pedido é obrigatório")
     private StatusPedido status;
 }

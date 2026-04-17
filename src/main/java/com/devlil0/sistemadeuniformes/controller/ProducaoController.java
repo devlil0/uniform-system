@@ -35,7 +35,9 @@ public class ProducaoController {
         return producaoService.create(request);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/" +
+            "" +
+            "1{id}")
     @ResponseStatus(HttpStatus.OK)
     public ProducaoResponse update(@PathVariable Long id, @Valid @RequestBody ProducaoRequest request) {
         return producaoService.update(id, request);

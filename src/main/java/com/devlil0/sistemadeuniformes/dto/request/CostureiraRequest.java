@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class CostureiraRequest {
 
-    @NotNull
+
     private Long id;
 
     @NotBlank
