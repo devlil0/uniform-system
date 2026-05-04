@@ -1,10 +1,23 @@
-# 🧵 Uniform Management System
+# Uniform Management System
 
-🌐 Language: [Português](README_PT.md) | English
+Language: [Português](README_PT.md) | English
 
 ---
 
-## 📌 Overview
+## Preview
+
+### Light Mode
+
+![IU Uniformes - Light Mode](./assets/preview-light.png)
+
+### Dark Mode
+
+![IU Uniformes - Dark Mode](./assets/preview-dark.png)
+
+---
+
+## Overview
+
 Web system to manage the full workflow:
 
 **Orders → Production → Inventory → Delivery**
@@ -13,63 +26,71 @@ Centralizes all company operations in one place, replacing spreadsheets and manu
 
 ---
 
-## ⚙️ Features
+## Features
 
-### 👤 Clients
-- Client registration (name, contact)
+### Clients
 
-### 👕 Uniforms
+- Client registration with name and contact information
+
+### Uniforms
+
 - Name
-- Fabric (PV / BRIM)
-- Size (PP → EXG)
+- Fabric: PV or BRIM
+- Size: PP to EXG
 - Color
 - Reflective option
 
-### 📦 Orders
+### Orders
+
 - Create orders per client
-- Status:
+- Order status:
   - PENDING
   - IN_PRODUCTION
   - COMPLETED
   - SHIPPED
 
-### 🧾 Order Items
-- Link uniforms + quantities
+### Order Items
 
-### 🏭 Production
+- Link uniforms with quantities
+
+### Production
+
 - Assign seamstress
-- Stages:
+- Production stages:
   - CUTTING
   - SEWING
   - PRINTING
   - FINISHING
   - PACKAGING
-- Track input/output per stage
+- Track input and output per stage
 
-### 📦 Bundles
+### Bundles
+
 - Group completed orders
-- Shipping date tracking
+- Track shipping date
 
-### 🚚 Delivery
+### Delivery
+
 - Assign delivery person
-- Status:
+- Delivery status:
   - PENDING
   - IN_TRANSIT
   - DELIVERED
 
-### 📊 Inventory
+### Inventory
+
 - Track available items
 - Link items to specific clients
 
 ---
 
-## 🔄 System Flow
+## System Flow
 
 Client → Uniform → Order → Items → Production → Bundle → Delivery → Inventory
 
 ---
 
-## 🚀 Advantages
+## Advantages
 
 - Full operational centralization
 - Complete traceability
@@ -81,6 +102,6 @@ Client → Uniform → Order → Items → Production → Bundle → Delivery �
 
 ---
 
-## 🧠 Goal
+## Goal
 
 Provide full operational visibility and enable scalable business growth.

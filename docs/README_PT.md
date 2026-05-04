@@ -1,86 +1,107 @@
-# 🧵 Sistema de Gestão de Uniformes
+# Sistema de Gestão de Uniformes
 
-🌐 Idioma: Português | [English](README.md)
+Idioma: Português | [English](README.md)
 
 ---
 
-## 📌 Visão Geral
-Sistema web para gerenciamento completo da operação de uniformes:
+## Preview
+
+### Modo Claro
+
+![IU Uniformes - Modo Claro](./assets/preview-light.png)
+
+### Modo Escuro
+
+![IU Uniformes - Modo Escuro](./assets/preview-dark.png)
+
+---
+
+## Visão Geral
+
+Sistema web para gerenciar todo o fluxo operacional:
 
 **Pedidos → Produção → Estoque → Entrega**
 
-Centraliza todas as informações da empresa em um único sistema, substituindo planilhas e controles manuais.
+Centraliza todas as operações da empresa em um só lugar, substituindo planilhas e processos manuais.
 
 ---
 
-## ⚙️ Funcionalidades
+## Funcionalidades
 
-### 👤 Clientes
-- Cadastro de clientes (nome, contato)
+### Clientes
 
-### 👕 Uniformes
+- Cadastro de clientes com nome e informações de contato
+
+### Uniformes
+
 - Nome
-- Malha (PV / BRIM)
-- Tamanho (PP → EXG)
+- Tecido: PV ou BRIM
+- Tamanho: PP até EXG
 - Cor
-- Refletivo
+- Opção de refletivo
 
-### 📦 Pedidos
+### Pedidos
+
 - Criação de pedidos por cliente
-- Status:
-  - PENDENTE
-  - EM_PRODUCAO
-  - FINALIZADO
-  - ENVIADO
+- Status do pedido:
+  - PENDING
+  - IN_PRODUCTION
+  - COMPLETED
+  - SHIPPED
 
-### 🧾 Itens do Pedido
-- Associação de uniformes + quantidades
+### Itens do Pedido
 
-### 🏭 Produção
+- Vinculação de uniformes com quantidades
+
+### Produção
+
 - Atribuição de costureira
-- Etapas:
-  - CORTE
-  - COSTURA
-  - ESTAMPA
-  - ACABAMENTO
-  - EMBALAGEM
-- Registro de entrada/saída por etapa
+- Etapas de produção:
+  - CUTTING
+  - SEWING
+  - PRINTING
+  - FINISHING
+  - PACKAGING
+- Controle de entrada e saída por etapa
 
-### 📦 Fardos
-- Agrupamento para envio
-- Registro de data
+### Fardos
 
-### 🚚 Entregas
+- Agrupamento de pedidos concluídos
+- Controle da data de envio
+
+### Entrega
+
 - Atribuição de entregador
-- Status:
-  - PENDENTE
-  - EM_TRANSITO
-  - ENTREGUE
+- Status da entrega:
+  - PENDING
+  - IN_TRANSIT
+  - DELIVERED
 
-### 📊 Estoque
-- Controle de peças disponíveis
-- Vinculação por cliente
+### Estoque
+
+- Controle de itens disponíveis
+- Vinculação de itens a clientes específicos
 
 ---
 
-## 🔄 Fluxo do Sistema
+## Fluxo do Sistema
 
 Cliente → Uniforme → Pedido → Itens → Produção → Fardo → Entrega → Estoque
 
 ---
 
-## 🚀 Vantagens
+## Vantagens
 
-- Centralização total da operação
+- Centralização completa da operação
 - Rastreabilidade completa
 - Redução de erros e retrabalho
-- Controle por etapas da produção
-- Gestão de equipe (costureiras e entregadores)
+- Controle das etapas de produção
+- Gestão de equipe
 - Estoque organizado
-- Acesso remoto via navegador
+- Acesso remoto pelo navegador
 
 ---
 
-## 🧠 Objetivo
+## Objetivo
 
-Dar visibilidade total da operação e permitir crescimento da empresa com controle.
+Fornecer visibilidade operacional completa e permitir o crescimento escalável do negócio.

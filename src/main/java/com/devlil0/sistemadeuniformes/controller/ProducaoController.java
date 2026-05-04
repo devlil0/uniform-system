@@ -35,14 +35,11 @@ public class ProducaoController {
         return producaoService.create(request);
     }
 
-    @PutMapping("/" +
-            "" +
-            "1{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ProducaoResponse update(@PathVariable Long id, @Valid @RequestBody ProducaoRequest request) {
         return producaoService.update(id, request);
     }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
